@@ -18,7 +18,7 @@ bool isDivisibleBy(int x, int y){
 
 //This function checks to see if x is prime
 bool isPrime(int x){
-  if(x==1){
+  if (x < 2){
     return false;
   }
   for (int i = 0; i < x; i++){
@@ -29,7 +29,7 @@ bool isPrime(int x){
   return true;
 }
 
-//This function finds the next primne number greater than x
+//This function finds the next prime number greater than x
 int nextPrime(int x){
   for (int i = x+1; i > x; i++){
     if(isPrime(i)){
@@ -43,8 +43,9 @@ int nextPrime(int x){
 int countPrime(int x, int y){
   int count = 0;
   for (int i = x; i <= y; i++){
-    if (isPrime(i))
-    count++;
+    if (isPrime(i)){
+      count++;
+    }
   }
   return count;
 }
@@ -130,14 +131,15 @@ int main(){
 }
 */
 
-/*  Lab 5D
+/* Lab 5D
 int main(){
   int a,b;
   std::cout<<"Enter the lower limit :";
   std::cin>>a;
   std::cout<<std::endl<<"Enter the upper limit :";
   std::cin>>b;
-  std::cout<<std::endl<<"There are "<<countPrime(a, b)<<" prime numbers in that range.";
+  int num = countPrime(a, b);
+  std::cout<<std::endl<<"There are "<< num <<" prime numbers in that range.";
 }
 */
 
