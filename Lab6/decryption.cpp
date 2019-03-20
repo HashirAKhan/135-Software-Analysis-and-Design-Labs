@@ -5,6 +5,8 @@
 
 #include <iostream>
 
+
+//Function for decrytion shift
 char shiftLeft(char c, int lshift){
   if (!isalpha(c)){
     return c;
@@ -19,6 +21,8 @@ char shiftLeft(char c, int lshift){
   return result;
 }
 
+
+//function fo encryption shift
 char shiftRight(char c, int rightShift){
   if(!isalpha(c)){
     return c;
@@ -33,6 +37,7 @@ char shiftRight(char c, int rightShift){
   return result;
 }
 
+//function to decrypt caesar
 std::string decryptCaesar(std::string text, int rshift){
   std::string result = "";
   for (int i = 0; i < text.length(); i++){
@@ -41,19 +46,27 @@ std::string decryptCaesar(std::string text, int rshift){
   return result;
 }
 
-std::string decryptVigenre(std::string text, std::string key){
+//function to dycrypt Vigenre
+std::string decryptVigenere(std::string text, std::string key){
   int index = 0;
   std::string result = "";
   for (int i = 0; i < text.length(); i++){
-    result+=shiftLeft(text[i],((int)key[index])-97);
-    index++;
-    if(index == key.length()){
-      index = 0;
+    while(!isalpha(text[i]) && i < text.length()){
+      result += text[i];
+      i++;
+    }
+    if(i<text.length()){
+      result+=shiftLeft(text[i],((int)key[index])-97);
+      index++;
+      if(index == key.length()){
+        index = 0;
+      }
     }
   }
   return result;
 }
 
+//function to encrypt caesar
 std::string encryptCaesar(std::string text, int rightShift){
   std::string result = "";
   for (int i = 0; i < text.length(); i++){
@@ -62,23 +75,30 @@ std::string encryptCaesar(std::string text, int rightShift){
   return result;
 }
 
-std::string encryptVigenre(std::string text, std::string key_word){
+//runs the encryption function
+std::string encryptVigenere(std::string text, std::string key_word){
   int index = 0;
   std::string result = "";
   for (int i = 0; i < text.length(); i++){
-      result+=shiftRight(text[i],((int)key_word[index])-97);
-      index++;
-      if(index == key_word.length()){
-        index = 0;
+      while (!isalpha(text[i])&& i<text.length()){   //just adds the non alphabet and moves to next char
+        result += text[i];
+        i++;
+      }
+      if(i<text.length()){
+        result+=shiftRight(text[i],((int)key_word[index])-97);
+        index++;
+        if(index == key_word.length()){
+          index = 0;
+        }
       }
   }
   return result;
 }
-
+//main function
 int main(){
   std::cout<<"Enter Plaintext: ";
-  std::string text, keyWord;
-  int rshift;
+  std::string text, keyWord;  //stores text and key
+  int rshift; //store right shift
   std::getline(std::cin,text);
   std::cout<<std::endl<<std::endl<<"= Caesar ="<<std::endl<<"Enter shift     : ";
   std::cin>>rshift;
@@ -86,8 +106,8 @@ int main(){
   std::cout<<"Decrypted       : "<<decryptCaesar(encryptCaesar(text,rshift), rshift)<<std::endl;
   std::cout<<std::endl<<"=  Vigenre  ="<<std::endl<<"Enter keyword   : ";
   std::cin>>keyWord;
-  std::cout<<std::endl<<"Ciphertext      : "<<encryptVigenre(text,keyWord)<<std::endl;
-  std::cout<<"Decrypted       : "<<decryptVigenre(encryptVigenre(text,keyWord),keyWord);
+  std::cout<<std::endl<<"Ciphertext      : "<<encryptVigenere(text,keyWord)<<std::endl;
+  std::cout<<"Decrypted       : "<<decryptVigenere(encryptVigenere(text,keyWord),keyWord);  //encrypts then decreypts
   std::cout<<std::endl;
   return 0;
 }

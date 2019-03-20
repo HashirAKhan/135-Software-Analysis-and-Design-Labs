@@ -5,8 +5,8 @@
 
 #include <iostream>
 
-
-char shiftRight(char c, int rightShift){
+//helper function for encryptCaesar
+char shiftChar(char c, int rightShift){
   if(!isalpha(c)){
     return c;
   }
@@ -20,18 +20,24 @@ char shiftRight(char c, int rightShift){
   return result;
 }
 
-
+//This method encrypts the function
 std::string encryptCaesar(std::string text, int rightShift){
   std::string result = "";
   for (int i = 0; i < text.length(); i++){
-    result += shiftRight(text[i], rightShift);
+    result += shiftChar(text[i], rightShift);
   }
   return result;
 }
 
 
-
+//main function
 int main(){
-  std::cout<<encryptCaesar("Very Hot", 5)<<std::endl;
-//  std::cout<<shiftRight('W',12);
+  std::string input;  //stores users message
+  int shift;          // stores the amount of shift needed
+  std::cout<<"Enter a message: ";
+  getline(std::cin, input);
+  std::cout<<std::endl<<"Enter the shift: ";
+  std::cin>>shift;
+  std::cout<<std::endl<<"Ciphertext     : "<<encryptCaesar(input, shift);
+
 }
