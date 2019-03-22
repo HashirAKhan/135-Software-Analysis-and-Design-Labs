@@ -11,3 +11,5 @@ Lab 4 https://maryash.github.io/135/labs/lab_04.html
 Lab 5 https://maryash.github.io/135/labs/lab_05.html
 
 Lab 6 https://maryash.github.io/135/labs/lab_06.html
+
+Lab 7 https://maryash.github.io/135/labs/lab_07.html
