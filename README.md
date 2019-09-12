@@ -20,4 +20,12 @@ Lab 9  https://maryash.github.io/135/labs/lab_09.html
 
 Lab 10 https://maryash.github.io/135/labs/lab_10.html
 
+Lab 11 https://maryash.github.io/135/labs/lab_11.html
+
+Lab 12 https://maryash.github.io/135/labs/lab_12.html
+
+Lab 13 https://maryash.github.io/135/labs/lab_13.html
+
 Project 2 https://maryash.github.io/135/projects/project_02.html
+
+Project 3 https://maryash.github.io/135/projects/project_03.html
